@@ -1,0 +1,99 @@
+body {
+	background-color: #333;
+}
+
+button > img {
+	margin-right: 10px;
+	max-height: 50px;
+	max-width: 50px;
+}
+
+h5 {
+	margin-top: 10px;
+}
+
+.btn-warning {
+	color: #FF0000;
+	font-weight: 800;
+}
+
+/*.media-body > h6 {
+	font-size: 14px;
+	font-weight: 400;
+	text-align: left;
+}*/
+
+.form-control {
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+.jumbotron {
+	background-color: #DDD;
+	text-align: center;
+}
+
+.main {
+	margin-bottom: 20px;
+}
+
+.media-heading {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.media-object {
+	max-height: 100px;
+	max-width: 100px;
+}
+
+.modal-body > img {
+	float: left;
+	margin-bottom: 30px;
+	margin-right: 35px;
+}
+
+.modal-footer {
+	clear: both;
+}
+
+.modal-header > h5 {
+	font-size: 20px;
+}
+
+.panel {
+	background-color: #FE9;
+	border-radius: 45px;
+	box-shadow: 0 -2px 0px rgba(0,0,0,0.05);
+	padding-bottom: 5px;
+}
+
+#badgeAvailable {
+	float: left;
+    margin-top: 20px;
+    margin-left: 43px;
+    margin-right: -43px;
+    font-size: 18px;
+}
+
+#badgeDevoured {
+	float: left;
+    margin-top: 20px;
+    margin-left: 43px;
+    margin-right: -43px;
+    font-size: 18px;
+}
+
+#data-entry > input {
+	height: 50px;
+	width: 50%;
+}
+
+#data-entry > button {
+	margin-top: 20px;
+}
+
+
+#main-header {
+	margin: 0 auto;
+}

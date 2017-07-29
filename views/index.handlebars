@@ -1,0 +1,44 @@
+<!-- Formats burger display logic > sends to main.handlebars -->
+<div class="col-xs-6">
+	<div class="panel panel-default">
+		<span class="badge" id="badgeAvailable">0</span><h3>Burgers Available to Eat</h3>
+	</div>
+	{{#each burgers}}
+		{{#unless this.devoured}}
+			<div class="media available">
+				<div class="media-left">
+					<a href="#">
+		    			<img class="media-object" src="./assets/img/burgerGlyph.png" alt="burger glyphicon">
+		    		</a>
+				</div>
+				<div class="media-body">
+		    		<h4 class="media-heading"><span>{{this.id}}.&nbsp;&nbsp;</span>{{this.burger_name}}</h4>
+		    		<h6>The {{this.burger_name}} is a delicious burger that you will definitely love to eat!</h6>
+				</div>
+				<div class="media-right media-middle">
+					<form action="/{{this.id}}?_method=PUT" method="POST">
+			          <input type="hidden" name="devoured" value="true">
+			          <button type="submit" class="btn btn-warning">Devour It!</button>
+			        </form>
+				</div>
+			</div>
+		{{/unless}}
+	{{/each}}
+</div>
+<div class="col-xs-6">
+	<div class="panel panel-default">
+		<span class="badge" id="badgeDevoured">0</span><h3>Burgers Devoured</h3>
+	</div>
+	{{#each burgers}}
+		{{#if this.devoured}}
+			<div class="media devoured">
+				<!-- <div class="media-left">
+				</div> -->
+				<div class="media-body">
+		    		<h4 class="media-heading"><span>{{this.id}}.&nbsp;&nbsp;</span>{{this.burger_name}}</h4>
+		    		<h6>Yum, that was delicious!</h6>
+				</div>
+			</div>
+		{{/if}}
+	{{/each}}
+</div>

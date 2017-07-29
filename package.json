@@ -1,0 +1,33 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "A MySQL ORM application that consumes burger objects",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "sh setup/welcome.sh",
+    "start": "npm install",
+    "poststart": "sh setup/launch.sh && node setup/install.js && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//OrigChrisScott/burger.git"
+  },
+  "keywords": [
+    "MySQL",
+    "ORM",
+    "Handlebars",
+    "jQuery"
+  ],
+  "author": "Chris Scott",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "execsql": "0.0.3",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "inquirer": "^3.2.1",
+    "method-override": "^2.3.9",
+    "mysql": "^2.13.0",
+    "opn": "^5.1.0"
+  }
+}

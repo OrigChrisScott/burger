@@ -1,0 +1,112 @@
+<!-- // Main HTML file for page layout -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eat Da Burger</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/burger_style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="container">
+            
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			    		<div class="modal-header">
+				        	<h5 class="modal-title" id="myModalLabel">What are you trying to pull?</h5>
+				        	<!-- <button type="button" class="close" id="modalClose" data-dismiss="modal" aria-label="Close">
+				        		<span aria-hidden="true">&times;</span>
+				        	</button> -->
+			    		</div>
+			    		
+			    		<!-- Modal info -->
+			    		<div class="modal-body">
+							<img id="friendPhoto" width="150px" src="./assets/img/error.jpg" alt="hamburglar" />
+							<h3>You must enter a burger name to create a burger!</h3>
+				    	</div>
+
+				    	<div class="modal-footer">
+				        	<a href="" data-dismiss="modal"><button type="button" class="btn btn-success" data-dismiss="modal">I understand</button></a>
+				     	</div>
+				    </div>
+				</div>
+			</div>
+
+            <div class="jumbotron">
+	            <div id="main-header">
+	                <a href="/"><img id="main-image" src="./assets/img/burger.png" alt="Big Burger" /></a>
+	                <h1>Eat Da Burger!</h1>
+	                <hr>
+	            </div>
+	           	<div class="col-xs-12 main">
+	                {{{ body }}}
+	            </div>
+		        <div>   
+		            <div class="form-group" id="data-entry">	
+							<input type="text" class="form-control" id="burgerName">
+		                    <h5>Enter a burger you think is delicious and click "Create Burger"</h5>
+		                    <button type="button" class="btn btn-warning btn-lg" id="submit-button"><img src="./assets/img/burgerGlyph.png" />Create Burger</button>
+		            </div>
+		        </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+<script type="text/javascript">
+	
+	// On window load, update number of burgers available and devoured.
+	$(window).load(function(){
+		let numAvailable = $('div.media.available').length;
+		let numDevoured = $('div.media.devoured').length;
+		$('#badgeAvailable').text(numAvailable);
+		$('#badgeDevoured').text(numDevoured);
+	});
+
+	const createBurger = () => {
+		// Trim whitespace of user input.
+		let burgerName = $('#burgerName').val().trim();
+		// Validation check
+		if (burgerName == '') {
+			$('#myModal').modal('show');
+			return;
+		}
+		// Clear input box value.
+		$('#burgerName').val('');
+		// Call function to escape HTML injection from user input.
+		let sanitizedName = sanitize(burgerName);
+		$.post('/', {'burger_name': sanitizedName}, function(data) {
+			if (data) {
+				// Reload homepage to display new burger added.
+				window.location = data.redirect;
+			}
+		});
+	};
+
+	// Escape characters for HTML injection.
+	const sanitize = (string) => $($.parseHTML(string)).text();
+
+	// On-click event for submit.
+	$('#submit-button').on('click', createBurger);
+	$('#burgerName').keyup(function(event) {
+		if (event.keyCode == 13) {
+			$('#submit-button').click();
+		}
+	});
+
+</script>
+
+</body>
+
+</html>
