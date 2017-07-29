@@ -4,17 +4,6 @@ const execsql = require('execsql');
 const mysql = require('mysql');
 const inquirer = require('inquirer');
 
-// const createConnection = function(port, user, pass, db) {
-// 	let connection = mysql.createConnection({
-// 		host: 'localhost',
-// 		port: port,
-// 		user: user,
-// 		password: pass,
-// 		database: db
-// 	});
-// 	return connection;
-// };
-
 const dbSetup = function() {
 	let userParams = [{
 			type: 'input',

@@ -8,6 +8,10 @@ Installation:
 2. Type 'npm start' at the command prompt.
 3. Enjoy the ride!
 
+Note:  If installation fails for a reason related to MySQL not being found, you may need to manually start your MySQL server 
+and alter the 'poststart' key of the package.json file by removing the 'sh setup/launch.sh &&' portion of that value string.
+This installation script was tested on a Mac OSX operating system with a standard Bash shell environment.  Bash emulators may encounter errors.
+
 
 Usage:
 
